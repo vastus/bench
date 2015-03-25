@@ -4,7 +4,7 @@
   notify: restart nginx
 
 - name: Copy server template to available sites
-  template: src=server.conf dest=/etc/nginx/sites-available/{{ app.name }}
+  template: src=server.j2 dest=/etc/nginx/sites-available/{{ app.name }}
 
 - name: Unlink default server conf from enabled sites
   file: path=/etc/nginx/sites-enabled/default state=absent

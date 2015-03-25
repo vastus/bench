@@ -80,7 +80,8 @@ test:
 #
 production:
   <<: *default
+  url: bench-db.cl2x575ljc8s.eu-west-1.rds.amazonaws.com
   database: bench_production
-  username: deployer
+  username: ubuntu
   password: <%= ENV['BENCH_DATABASE_PASSWORD'] || "deployer" %>
 
