@@ -1,0 +1,36 @@
+upstream webrick {
+  server 127.0.0.1:3000;
+}
+
+upstream puma {
+  server unix:/tmp/puma.sock;
+}
+
+upstream unicorn {
+  server unix:/tmp/unicorn.sock fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name {{ server.hostname }};
+
+  root {{ app.path }}/public;
+
+  error_page 500 502 503 504 /500.html;
+
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_redirect off;
+    try_files $uri $uri/index.html $uri.html @rails;
+  }
+
+  location @rails {
+    proxy_pass http://unicorn;
+  }
+
+  client_max_body_size 4G;
+}
+
