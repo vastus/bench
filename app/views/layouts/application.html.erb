@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bench</title>
+    <%= stylesheet_link_tag("application", media: "all") %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <header>
+      <div class="container">
+        <h1><%= link_to("Arts", root_path, :class => "header-link") %></h1>
+      </div>
+    </header>
+
+    <div class="pusher"></div>
+
+    <nav>
+      <div class="container">
+        <ul class="main-menu-list">
+          <li class="menu-item"><%= link_to("All", articles_path, :class => "menu-link") %></li>
+          <li class="menu-item"><%= link_to("New", new_article_path, :class => "menu-link") %></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="clear"></div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
+

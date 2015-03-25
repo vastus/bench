@@ -1,0 +1,15 @@
+---
+- name: Clone rbenv
+  git: update=no repo=https://github.com/sstephenson/rbenv.git dest={{ rbenv.path }}
+
+- name: Link binary
+  sudo: yes
+  file: src={{ rbenv.path }}/bin/rbenv dest=/usr/local/bin/rbenv state=link
+
+- name: Copy hook to shell script
+  sudo: yes
+  copy: src=rbenv.sh dest=/etc/profile.d/rbenv.sh
+
+- name: Install ruby-build
+  git:  update=no repo=https://github.com/sstephenson/ruby-build.git dest={{ rbenv.path }}/plugins/ruby-build
+

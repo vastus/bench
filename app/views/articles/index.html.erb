@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<section class="articles">
+  <% @articles.each do |article| %>
+    <article class="article">
+      <div class="article-title">
+        <h1><%= article.title %></h1>
+      </div>
+
+      <div class="article-meta">
+        <span>
+          Published <%= time_ago_in_words(article.created_at) %> ago
+        </span>
+
+        <span class="vertical-separator">|</span>
+
+        <span>
+          <%= link_to(pluralize(article.comments.count, "Comment"), article_path(article, :anchor => "comments"), :class => "article-comments-link") %>
+        </span>
+      </div>
+
+      <div class="article-content">
+        <%= article.content %>
+      </div>
+    </article>
+  <% end %>
+</section>
+

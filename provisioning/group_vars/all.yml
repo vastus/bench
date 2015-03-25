@@ -1,0 +1,12 @@
+---
+user: ubuntu
+
+app:
+  name: bench
+
+rbenv:
+  path: /home/{{ user }}/.rbenv
+
+ruby:
+  version: 2.2.0
+

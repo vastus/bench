@@ -1,0 +1,25 @@
+---
+- name: Install the Stack
+  hosts: web
+  sudo: yes
+  roles:
+    - common
+
+- name: Install ruby w/ rbenv
+  hosts: web
+  roles:
+    - rbenv
+    - ruby
+
+- name: Install web services
+  hosts: web
+  remote_user: root
+  roles:
+    - web
+
+# - name: Install db service (PostgreSQL)
+#   hosts: db
+#   remote_user: root
+#   roles:
+#     - postgres
+

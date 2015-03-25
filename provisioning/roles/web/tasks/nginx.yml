@@ -1,0 +1,14 @@
+--- 
+- name: Install Nginx
+  apt: name=nginx state=present
+  notify: restart nginx
+
+- name: Copy server template to available sites
+  template: src=server.conf dest=/etc/nginx/sites-available/{{ app.name }}
+
+- name: Unlink default server conf from enabled sites
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: Link server conf to enabled sites
+  file: src=/etc/nginx/sites-available/{{ app.name }} dest=/etc/nginx/sites-enabled/{{ app.name }} state=link
+  notify: restart nginx

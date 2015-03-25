@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<section class="article-show">
+  <article class="article">
+    <div class="article-title">
+      <h1><%= @article.title %></h1>
+    </div>
+
+    <div class="article-content">
+      <%= @article.content %>
+    </div>
+  </article>
+  <section class="article-comments">
+    <h2>Comments</h2>
+    <% @article.comments.each do |comment| %>
+      <div class="comment">
+        <div class="comment-body">
+          <%= comment.body %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</section>
+
+

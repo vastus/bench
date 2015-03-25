@@ -1,0 +1,13 @@
+---
+- name: Update APT
+  apt: update_cache=yes cache_valid_time=7200
+
+- name: Upgrade system
+  apt: upgrade=yes
+
+- name: Install common programs
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - libreadline-dev
+    - git

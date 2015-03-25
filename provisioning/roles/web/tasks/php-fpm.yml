@@ -1,0 +1,9 @@
+--- 
+- name: Install PHP-FPM
+  apt: name=php5-fpm state=present
+  notify: restart php
+
+- name: Copy confs
+  copy: src=php.ini dest=/etc/php5/fpm
+  copy: src=www.conf dest=/etc/php5/fpm/pool.d
+  notify: restart php
