@@ -1,2 +1,2 @@
-web: bundle exec puma -C config/puma.rb -b unix:///var/run/puma.sock
+web: bundle exec puma -C config/puma.rb -b unix:///tmp/puma.sock
 
