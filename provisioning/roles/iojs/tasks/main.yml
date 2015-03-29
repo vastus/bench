@@ -1,0 +1,21 @@
+---
+- name: Download tarball
+  shell: curl https://iojs.org/dist/v1.6.2/iojs-v1.6.2-linux-x64.tar.xz > /tmp/iojs-v1.6.2-linux-x64.tar.xz
+
+- name: Create source dir
+  file: path=/home/ubuntu/.local/src/iojs state=directory
+
+- name: Extract tarball
+  unarchive: src=/tmp/iojs-v1.6.2-linux-x64.tar.xz dest=/home/ubuntu/.local/src/iojs copy=no
+
+- name: Link to current
+  file: src=/home/ubuntu/.local/src/iojs/iojs-v1.6.2-linux-x64 dest=/home/ubuntu/.local/src/iojs/current state=link
+
+- name: Link binaries
+  sudo: yes
+  file: src=/home/ubuntu/.local/src/iojs/current/bin/{{ item.src }} dest=/usr/local/bin/{{ item.dest }} state=link
+  with_items:
+    - { src: 'iojs', dest: 'iojs' }
+    - { src: 'iojs', dest: 'node' }
+    - { src: 'npm', dest: 'npm' }
+

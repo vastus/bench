@@ -10,3 +10,6 @@ rbenv:
 ruby:
   version: 2.2.0
 
+sources:
+  path: /home/{{ user }}/.local/src
+

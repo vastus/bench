@@ -1,0 +1,7 @@
+---
+# version: 1.6.2
+# src_path: "{{ sources.path }}/iojs"
+# pkg_name: "iojs-v{{ version }}-linux-x64"
+# tarball: "{{ pkg_name }}.tar.xz"
+download_url: "https://iojs.org/dist/v{{ version }}/{{ tarball }}"
+

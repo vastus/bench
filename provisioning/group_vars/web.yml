@@ -2,3 +2,4 @@
 server:
   root: /home/{{ user }}/apps/{{ app.name }}
   hostname: localhost
+
