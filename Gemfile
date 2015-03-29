@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # usr
 gem 'faker'
 gem 'puma'
+gem 'rack-cors', require: 'rack/cors'
+gem 'rack-mini-profiler', require: false
+gem 'redcarpet', '~> 3.2.2'
 
 # grp
 group :development, :test do

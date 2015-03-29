@@ -10,8 +10,9 @@
       <%= @article.content %>
     </div>
   </article>
+
   <section class="article-comments">
-    <h2>Comments</h2>
+    <h2><a id="comments" class="anchor" href="#comments">Comments</a></h2>
     <% @article.comments.each do |comment| %>
       <div class="comment">
         <div class="comment-body">

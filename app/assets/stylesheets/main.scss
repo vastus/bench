@@ -5,14 +5,12 @@ body {
   color: #333;
   background: $main_bg_color;
   margin: 0 auto 2em auto;
-  position: relative;
 }
 
 header {
   width: 100%;
   position: fixed;
   padding-top: 1em;
-  margin-bottom: 2em;
   background-color: $main_bg_color;
   border-bottom: 1px solid #eee;
 }
@@ -26,6 +24,11 @@ a:hover {
   color: darken($link_color, 10);
 }
 
+.anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
 .clear {
   clear: both;
 }
@@ -33,7 +36,7 @@ a:hover {
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0 2em;
 }
 
 .pusher {
@@ -49,7 +52,7 @@ a:hover {
 $menu_link_font_size: 14px;
 $menu_link_padding_top: 7px;
 $menu_link_padding_right: 13px;
-$menu_item_border_size: 1px;
+$menu_item_border_size: 3px;
 
 .main-menu-list {
   margin: 0;
@@ -68,13 +71,13 @@ $menu_item_border_size: 1px;
   margin-right: 3px;
   padding: $menu_link_padding_top $menu_link_padding_right;
   font-size: $menu_link_font_size;
-  color: #555;
+  color: #666;
   float: left;
   text-decoration: none;
 }
 
 .menu-link:hover {
   color: #111;
-  border-bottom: 1px solid;
+  border-bottom: $menu_item_border_size solid #ff6106;
 }
 

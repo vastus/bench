@@ -15,12 +15,12 @@
         <span class="vertical-separator">|</span>
 
         <span>
-          <%= link_to(pluralize(article.comments.count, "Comment"), article_path(article, :anchor => "comments"), :class => "article-comments-link") %>
+          <%= link_to(pluralize(article.comments.size, "Comment"), article_path(article, :anchor => "comments"), :class => "article-comments-link") %>
         </span>
       </div>
 
       <div class="article-content">
-        <%= article.content %>
+        <%= raw(article.content_as_markdown) %>
       </div>
     </article>
   <% end %>
