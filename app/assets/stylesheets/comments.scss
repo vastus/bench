@@ -1,12 +1,14 @@
-#comments {
-  margin-top: -4.875em;
-  padding-top: 4.875em;
-}
+// #comments {
+//   margin-top: 4.875em;
+//   padding-top: 4.875em;
+// }
 
 .comment {
+  font-size: 14px;
+  line-height: 1.5;
   margin-bottom: 1em;
   padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  border: 1px solid #eee;
+  border-radius: 3px;
 }
 

@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
-  belongs_to(:article)
+  # Associations.
+  belongs_to(:article, :touch => true) # Invalidate article's cache key.
 end
 

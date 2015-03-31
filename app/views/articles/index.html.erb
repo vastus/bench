@@ -1,28 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<section class="articles">
-  <% @articles.each do |article| %>
-    <article class="article">
-      <div class="article-title">
-        <h1><%= article.title %></h1>
-      </div>
+  <% cache ["v2", @articles] do %>
+    <section class="articles">
+      <% @articles.each do |article| %>
+        <article class="article">
+          <div class="article-title">
+            <h1><%= article.title %></h1>
+          </div>
 
-      <div class="article-meta">
-        <span>
-          Published <%= time_ago_in_words(article.created_at) %> ago
-        </span>
+          <div class="article-meta">
+            <span>
+              Published <%= time_ago_in_words(article.created_at) %> ago
+            </span>
 
-        <span class="vertical-separator">|</span>
+            <span class="vertical-separator">|</span>
 
-        <span>
-          <%= link_to(pluralize(article.comments.size, "Comment"), article_path(article, :anchor => "comments"), :class => "article-comments-link") %>
-        </span>
-      </div>
+            <span>
+              <%= link_to(pluralize(article.comments.size, "Comment"), article_path(article, :anchor => "comments"), :class => "article-comments-link") %>
+            </span>
+          </div>
 
-      <div class="article-content">
-        <%= raw(article.content_as_markdown) %>
-      </div>
-    </article>
+          <div class="article-content">
+            <%= raw(article.content_as_markdown) %>
+          </div>
+        </article>
+      <% end %>
+    </section>
   <% end %>
-</section>
+</div>
 

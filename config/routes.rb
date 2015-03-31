@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root("articles#index")
 
   # Resources
-  resources(:articles) do
-    resources(:comments)
-  end
+  resources(:articles)
+  resources(:comments, :only => [:create])
 end
 

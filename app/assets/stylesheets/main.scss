@@ -33,6 +33,10 @@ a:hover {
   clear: both;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -79,5 +83,55 @@ $menu_item_border_size: 3px;
 .menu-link:hover {
   color: #111;
   border-bottom: $menu_item_border_size solid #ff6106;
+}
+
+.form {
+  $ta_padding_side: .5em;
+  $ta_border_size: .0625em;
+  $right_margin: 2 * ($ta_padding_side + $ta_border_size);
+
+  margin: 0;
+  padding: 0;
+  margin-right: $right_margin;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  input,
+  textarea {
+    margin-bottom: 1em;
+  }
+
+  textarea {
+    width: 100%;
+    resize: vertical;
+    padding: .3em $ta_padding_side;
+    min-height: 6em;
+    line-height: 1.5;
+    border: $ta_border_size solid #999;
+    border-radius: 3px;
+  }
+
+  .align-right {
+    margin-right: -$right_margin;
+  }
+
+  // background: #333;
+}
+
+.button {
+  $bg_color: rgb(250, 250, 250);
+  color: #333;
+  padding: .3em 1.5em;
+  line-height: 1.5;
+  font-size: 14px;
+  border: 1px solid #eee;
+  background: $bg_color;
+  border-radius: 5px;
+
+  &:hover {
+    background: darken($bg_color, 3);
+  }
 }
 

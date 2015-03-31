@@ -1,26 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<section class="article-show">
-  <article class="article">
-    <div class="article-title">
-      <h1><%= @article.title %></h1>
-    </div>
-
-    <div class="article-content">
-      <%= @article.content %>
-    </div>
-  </article>
-
-  <section class="article-comments">
-    <h2><a id="comments" class="anchor" href="#comments">Comments</a></h2>
-    <% @article.comments.each do |comment| %>
-      <div class="comment">
-        <div class="comment-body">
-          <%= comment.body %>
+  <% cache ["v1", @article] do %>
+    <section class="article-show">
+      <article class="article">
+        <div class="article-title">
+          <h1><%= @article.title %></h1>
         </div>
-      </div>
-    <% end %>
-  </section>
-</section>
 
+        <div class="article-content">
+          <%= raw(@article.content_as_markdown) %>
+        </div>
+
+        <div class="actions">
+          <p>
+            <%= link_to("Edit", edit_article_path) %>
+          </p>
+        </div>
+      </article>
+
+      <section class="article-comments">
+        <h2><a id="comments" class="anchor" href="#comments">Comments</a></h2>
+
+        <section class="comments-new">
+          <%= form_for(@article.comments.build, :html => {:class => "form comment-form"}) do |f| %>
+            <%= f.hidden_field(:article_id, :value => @article.id) %>
+
+            <div class="field">
+              <%= f.text_area(:body, :placeholder => "Join the conversation.") %>
+            </div>
+
+            <div class="actions align-right">
+              <%= f.submit("Post", :class => "button") %>
+            </div>
+          <% end %>
+        </section>
+
+        <% @comments.each do |comment| %>
+          <div class="comment">
+            <div class="comment-body">
+              <%= comment.body %>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    </section>
+  <% end %>
+</div>
 
